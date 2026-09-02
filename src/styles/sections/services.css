@@ -1,0 +1,80 @@
+/* ---------- 8. Services ------------------------------------- */
+.services { padding: 200px var(--gutter) 101px; background: var(--c-light); }
+/* headline is broken into two fixed lines; size it off the column so the
+   longer line always fits rather than wrapping to three */
+.services .head { container-type: inline-size; }
+.services .head h2 {
+  max-width: none;
+  white-space: nowrap;
+  font-size: min(var(--fs-h2), 6.5cqw);
+}
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.svc {
+  position: relative;
+  aspect-ratio: 386.67 / 374.89;
+  overflow: hidden;
+}
+
+/* dark text card */
+.svc--text {
+  /* the real copy runs longer than the placeholder did, so the card's
+     ratio becomes a floor rather than a cap — a fixed aspect-ratio plus
+     overflow:hidden was cutting the text off on narrow screens */
+  aspect-ratio: auto;
+  min-height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: var(--c-cod-gray);
+}
+.svc--text::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 0;
+  background: var(--c-red);
+  transition: height var(--dur) var(--ease);
+  z-index: 0;
+}
+.svc--text:hover::before { height: 100%; }
+.svc--text > * { position: relative; z-index: 1; }
+
+.svc__icon {
+  width: 40px; height: 41px;
+  margin-bottom: 47px;
+  background: var(--c-red);
+  transition: background var(--dur) var(--ease);
+}
+.svc--text:hover .svc__icon { background: var(--c-white); }
+.svc__icon--designs   { -webkit-mask: var(--icon-designs)   no-repeat center / contain; mask: var(--icon-designs)   no-repeat center / contain; }
+.svc__icon--prototype { -webkit-mask: var(--icon-prototype) no-repeat center / contain; mask: var(--icon-prototype) no-repeat center / contain; }
+.svc__icon--marketing { -webkit-mask: var(--icon-marketing) no-repeat center / contain; mask: var(--icon-marketing) no-repeat center / contain; }
+
+.svc--text h3 { color: var(--c-white); margin-bottom: 10px; }
+.svc--text p  { color: var(--c-mercury); margin-bottom: 20px; max-width: 307px; }
+.svc--text .link { color: var(--c-white); border-bottom-color: var(--c-white-19); }
+.svc--text .link::after { background: var(--c-white); }
+.svc--text:hover .link:hover { color: var(--c-white); }
+
+/* image card with outlined word */
+.svc--image { display: grid; place-items: center; }
+.svc--image .media__img { filter: grayscale(1); }
+.svc--image:hover .media__img { filter: grayscale(0); transform: scale(1.07); }
+.svc__word {
+  position: relative;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: .5px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-white);
+  transition: color var(--dur) var(--ease), letter-spacing var(--dur) var(--ease);
+}
+.svc--image:hover .svc__word { color: var(--c-white); letter-spacing: 3px; }

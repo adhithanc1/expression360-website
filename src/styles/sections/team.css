@@ -1,0 +1,55 @@
+/* ---------- 13. Team ---------------------------------------- */
+.team { padding: 100px var(--gutter); background: var(--c-white); }
+.team__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 15px; }
+.team__more { margin-top: 50px; text-align: center; }
+.member { text-align: center; }
+
+.member__photo {
+  position: relative;
+  aspect-ratio: 285 / 356.25;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.member__a, .member__b {
+  position: absolute; inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity .6s var(--ease), transform 1s var(--ease), filter .6s var(--ease);
+}
+.member__a { filter: grayscale(1); }
+.member__b { opacity: 0; }
+.member__photo:hover .member__a { opacity: 0; }
+.member__photo:hover .member__b { opacity: 1; transform: scale(1.05); }
+
+.member__social {
+  position: absolute;
+  left: 0; right: 0; bottom: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+.member__photo:hover .member__social { opacity: 1; transform: none; }
+.member__social a {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  background: var(--c-white);
+  color: var(--c-black);
+  font-size: 13px;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.member__social a:hover { background: var(--c-red); color: var(--c-white); }
+
+.member h4 { margin-bottom: 2px; }
+.member span {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--c-red);
+}

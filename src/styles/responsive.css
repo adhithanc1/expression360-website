@@ -1,0 +1,119 @@
+/* ---------- 20. Responsive ---------------------------------- */
+@media (max-width: 1400px) {
+  :root { --gutter: 60px; }
+}
+
+@media (max-width: 1100px) {
+  :root { --fs-h1: 48px; --lh-h1: 76px; --fs-h2: 36px; --lh-h2: 50px; --gutter: 40px; }
+  .timeline__list { grid-template-columns: repeat(2, 1fr); }
+  .milestone:nth-child(3n) .milestone__track::before { right: calc(-1 * var(--col-gap)); }
+  .milestone:nth-child(2n) .milestone__track::before { right: 0; }
+  .milestone:nth-child(3)::after { content: none; }
+  .milestone:nth-child(2n):not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: var(--rail-y);
+    bottom: calc(-1 * (var(--row-gap) + var(--rail-y)));
+    width: 1px;
+    background: var(--c-white-19);
+  }
+  /* centring is for the two-column layout only — once stacked, centred
+     flex items shrink to content and the media collapses to zero width */
+  .about__top { flex-direction: column; align-items: stretch; }
+  .about__copy { width: 100%; padding: 0 0 40px; }
+  .about__copy h2 { width: auto; max-width: 100%; }
+  .skills__inner { flex-direction: column; }
+  .careers .skills__inner { align-items: stretch; }
+  .skills__copy, .careers .skills__copy { padding: 50px 0 0; }
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .offices { grid-template-columns: repeat(2, 1fr); }
+  .team__grid { grid-template-columns: repeat(2, 1fr); gap: 30px 15px; }
+  .blog__grid { grid-template-columns: repeat(2, 1fr); }
+  .carousel { --cards: 2; }
+  .clients__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .newsletter { flex-direction: column; align-items: flex-start; }
+}
+
+/* the five nav items stop fitting beside the logo here — hand over to
+   the burger drawer before the bar overruns the viewport */
+@media (max-width: 992px) {
+  .nav { display: none; }
+  .header__brand { width: auto; padding-right: 20px; }
+  /* four stat columns squeeze the labels past their break point here */
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+@media (max-width: 860px) {
+  :root { --fs-h1: 36px; --lh-h1: 56px; --fs-h2: 30px; --lh-h2: 42px; --fs-h3: 22px; --lh-h3: 32px; --gutter: 24px; --hero-ratio: 3 / 2; }
+  .hero { padding: 30px var(--gutter) 60px; }
+  .hero__foot { flex-direction: column; gap: 30px; }
+  .socials { justify-content: start; }
+  .section, .about, .projects, .team, .work, .blog, .testimonials, .clients, .skills { padding-top: 60px; padding-bottom: 60px; }
+  .services { padding-top: 60px; }
+  .stats { padding: 40px var(--gutter) 48px; }
+  .about__facts, .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .projects__grid, .work__row, .testi__grid, .blog__grid, .services__grid { grid-template-columns: 1fr; }
+  .work__row--flip .work__panel, .work__row--flip .work__media { order: initial; }
+  .projects__head { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .creed { gap: 12px 0; }
+  .creed li { padding: 0 18px; }
+  .creed li + li { border-left: 0; }
+  .footer__top { flex-direction: column; }
+  .footer__nav { flex-wrap: wrap; padding-top: 0; }
+  .footer__nav a { padding: 6px 15px 6px 0; }
+  .footer__cols { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  .offices { grid-template-columns: 1fr; gap: 40px; }
+  .footer__main { padding: 60px var(--gutter); }
+  .awards__head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .testi { padding: 34px; }
+  .work__panel { padding: 34px; }
+}
+
+/* Below ~700px the headline hits its clamp floor and a single line no
+   longer fits the viewport, so let it wrap inside the image instead of
+   being clipped at both edges. */
+@media (max-width: 700px) {
+  :root { --hero-ratio: 1 / 1; }
+  .hero__scrim { opacity: 1; }
+  .hero__lines {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    white-space: normal;
+  }
+  .hero__title   { font-size: clamp(26px, 7.6vw, 44px); }
+  .hero__tagline { font-size: clamp(20px, 5.7vw, 33px); }
+}
+
+@media (max-width: 620px) {
+  .carousel { --cards: 1; --card-gap: 20px; }
+  .carousel__track { grid-auto-columns: 84%; }
+
+  /* single column — the rail turns vertical and runs down the left */
+  .timeline { --badge: 46px; }
+  .timeline__list { grid-template-columns: 1fr; row-gap: 46px; }
+  .milestone { padding-left: 32px; }
+  .milestone__track { position: absolute; top: 6px; left: 0; height: auto; bottom: -46px; margin: 0; width: 11px; }
+  .milestone:last-child .milestone__track { bottom: 0; }
+  .milestone__track::before { top: 5px; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; }
+  .milestone:nth-child(2n) .milestone__track::before,
+  .milestone:nth-child(3n) .milestone__track::before { right: auto; }
+  .milestone:nth-child(3)::after,
+  .milestone:nth-child(2n):not(:last-child)::after { content: none; }
+}
+
+@media (max-width: 640px) {
+  /* four logos would drop too narrow to read here — go 2-up instead */
+  .clients__grid { grid-template-columns: repeat(2, minmax(0, 200px)); column-gap: 32px; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+  :root { --hero-ratio: 4 / 5; }
+  .hero__stage { min-height: 340px; }
+  .team__grid, .about__facts, .stats__grid { grid-template-columns: 1fr; }
+  .stat { justify-content: flex-start; }
+  .header__inner { height: 64px; }
+  .logo { height: 20px; }
+  .footer__brand .logo { height: 28px; }
+}

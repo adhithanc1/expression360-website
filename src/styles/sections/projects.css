@@ -1,0 +1,72 @@
+/* ---------- 10. Projects ------------------------------------ */
+.projects { padding: 100px var(--gutter); background: var(--c-white); }
+.projects__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+.projects__head .eyebrow { margin-bottom: 19px; }
+.projects__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+.project {
+  position: relative;
+  display: block;
+  aspect-ratio: 600 / 389.5;
+  overflow: hidden;
+}
+.project__img {
+  position: absolute; inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1);
+  transition: filter .7s var(--ease), transform 1s var(--ease);
+}
+.project:hover .project__img { filter: grayscale(0); transform: scale(1.06); }
+
+/* the client photos are far brighter than a flat colour block, so the
+   white number and title need their own ground to sit on */
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .40) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .26) 50%, rgba(0, 0, 0, .90) 100%);
+  pointer-events: none;
+}
+
+.project__num {
+  position: absolute;
+  z-index: 2;
+  top: 40px; left: 40px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 30px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-red);
+  transition: transform var(--dur) var(--ease);
+}
+.project:hover .project__num { transform: translateY(-6px); }
+
+.project__body {
+  position: absolute;
+  z-index: 2;
+  left: 40px; bottom: 40px;
+  right: 40px;
+}
+.project__body h3 { color: var(--c-white); margin-bottom: 12px; }
+.tags { display: flex; gap: 5px; }
+.tags span {
+  padding: 4px 9px;
+  background: var(--c-white);
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 17px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--c-black);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.tags span:hover { background: var(--c-red); color: var(--c-white); }

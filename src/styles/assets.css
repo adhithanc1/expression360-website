@@ -1,0 +1,25 @@
+/* ============================================================
+   Asset tokens used from CSS (masks, backgrounds, decorative).
+   Content-driven images live in src/data/* instead, so they can
+   be typed and reused. Paths resolve against /public.
+   ============================================================ */
+
+:root {
+  /* chrome */
+  --img-chevron:    url("/assets/img-chevron.svg");
+  --img-burger:     url("/assets/img-burger.svg");
+
+  /* section backgrounds */
+  --img-hero:       url("/assets/img-hero.jpg");
+  --img-awards-bg:  url("/assets/img-awards-bg.jpg");
+  --img-testi-bg:   url("/assets/img-testi-bg.jpg");
+  --img-cta-bg:     url("/assets/img-cta-bg.jpg");
+
+  /* decorative */
+  --img-quote:      url("/assets/img-quote.png");
+
+  /* service icon masks */
+  --icon-designs:   url("/assets/icon-designs.svg");
+  --icon-prototype: url("/assets/icon-prototype.svg");
+  --icon-marketing: url("/assets/icon-marketing.svg");
+}

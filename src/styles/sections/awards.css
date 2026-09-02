@@ -1,0 +1,106 @@
+/* ---------- 12. Awards -------------------------------------- */
+.awards {
+  position: relative;
+  padding: 80px var(--gutter);
+  background: var(--c-cod-gray);
+  overflow: hidden;
+}
+.awards::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--img-awards-bg) no-repeat center / cover;
+  filter: grayscale(1);
+}
+.awards::after {
+  content: "";
+  position: absolute; inset: 0;
+  /* a touch darker than the original — the section is text-only now,
+     so the card copy has to hold up against the photo on its own */
+  background: rgba(0, 0, 0, .85);
+}
+.awards .container { position: relative; z-index: 1; }
+.awards h2 { color: var(--c-white); max-width: 520px; margin: 19px 0 16px; }
+
+.awards__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+.awards__count {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: var(--fs-link);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-white-60);
+}
+
+/* ---- horizontal carousel ---- */
+.carousel {
+  --cards: 3;
+  --card-gap: 30px;
+  position: relative;
+  margin-top: 48px;
+}
+.carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--cards) - 1) * var(--card-gap)) / var(--cards));
+  gap: var(--card-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* the rail below is the scroll affordance — hide the native bar */
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track:focus-visible { outline: 1px solid var(--c-red); outline-offset: 6px; }
+
+.carousel__nav { display: flex; flex: none; gap: 10px; }
+.carousel__btn {
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  color: var(--c-white);
+  border: 1px solid var(--c-white-19);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.carousel__btn:hover:not(:disabled) { background: var(--c-red); border-color: var(--c-red); }
+.carousel__btn:disabled { opacity: .28; cursor: default; }
+
+/* scroll position readout, built from the same parts as the skills bars */
+.carousel__rail { position: relative; height: 3px; margin-top: 34px; background: var(--c-white-19); overflow: hidden; }
+.carousel__fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 33%;
+  background: var(--c-red);
+}
+
+/* ---- award card ---- */
+.award {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 4px 0 26px;
+  border-bottom: 1px solid var(--c-white-19);
+  transition: border-color var(--dur) var(--ease);
+}
+.award:hover { border-bottom-color: var(--c-red); }
+.award__year {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: var(--fs-link);
+  letter-spacing: 1px;
+  color: var(--c-red);
+}
+.award h4 { color: var(--c-white); margin: 0; }
+.award p { color: var(--c-mercury); font-size: var(--fs-body); margin-top: auto; padding-top: 4px; }
+
+/* ---------- 12b. Journey ------------------------------------ */
+/* same ground as the careers section */

@@ -1,0 +1,17 @@
+/* ---------- 19. Back to top --------------------------------- */
+.totop {
+  position: fixed;
+  right: 28px; bottom: 28px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  background: var(--c-red);
+  color: var(--c-white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
+}
+.totop.is-on { opacity: 1; visibility: visible; transform: none; }
+.totop:hover { background: var(--c-white); color: var(--c-red); }

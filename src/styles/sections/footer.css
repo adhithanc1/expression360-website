@@ -1,0 +1,38 @@
+/* ---------- 18. Footer -------------------------------------- */
+.footer { background: var(--c-black); }
+.footer__main { padding: 120px var(--gutter); }
+.footer__top { display: flex; align-items: flex-start; gap: 40px; }
+.footer__brand { flex: 1; }
+.footer__brand .logo { width: auto; height: 34px; margin-bottom: 20px; }
+.footer__brand p { max-width: 520px; color: var(--c-white-60); }
+.footer__nav { display: flex; align-items: center; gap: 0; padding-top: 29px; }
+.footer__nav a {
+  padding: 0 15px;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: var(--fs-link);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-white-60);
+  transition: color .3s var(--ease);
+}
+.footer__nav a:hover { color: var(--c-red); }
+
+.footer hr { height: 1px; margin: 51px 0; border: 0; background: var(--c-white-19); }
+
+.footer__cols { display: grid; grid-template-columns: repeat(4, 1fr); }
+.footer__cols h4 { color: var(--c-white); margin-bottom: 20px; }
+.footer__cols p, .footer__cols a { color: var(--c-white-60); }
+.footer__cols li a { transition: color .3s var(--ease); }
+.footer__cols li a:hover { color: var(--c-red); }
+
+.footer__social { display: grid; grid-template-columns: repeat(5, 14px); gap: 25px 25px; }
+.footer__social a { color: var(--c-white-60); font-size: 14px; transition: color .3s var(--ease), transform .3s var(--ease); }
+.footer__social a:hover { color: var(--c-red); transform: translateY(-3px); }
+
+.footer__bar { padding: 21px var(--gutter); border-top: 1px solid var(--c-white-19); }
+.footer__bar .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.footer__bar p { color: var(--c-white-60); }
+.footer__legal { display: flex; gap: 26px; flex: none; }
+.footer__legal a { color: var(--c-white); transition: color .3s var(--ease); }
+.footer__legal a:hover { color: var(--c-red); }

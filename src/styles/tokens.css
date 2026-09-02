@@ -1,0 +1,38 @@
+/* ============================================================
+   Expression 360 / Expression 360 — Home
+   Ported 1:1 from Figma (file l1tMNMwvCW5oD3Q9vlKRRk, node 1:1325)
+   ============================================================ */
+
+/* ---------- 1. Design tokens (from the Figma variable set) --- */
+:root {
+  /* colour */
+  --c-black:      #000000;
+  --c-white:      #ffffff;
+  --c-red:        #ff0e47;   /* askproject.net/Torch Red  */
+  --c-cod-gray:   #181616;   /* askproject.net/Cod Gray   */
+  --c-mercury:    #e9e9e9;   /* askproject.net/Mercury    */
+  --c-light:      #f7f7f7;
+  --c-body:       #6a6a6a;
+  --c-white-60:   rgba(255, 255, 255, .60);
+  --c-white-19:   rgba(255, 255, 255, .19);
+  --c-black-12:   rgba(0, 0, 0, .12);
+
+  /* type */
+  --f-display: "Syne", "Helvetica Neue", Arial, sans-serif;
+  --f-body:    "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --fs-h1: 65px;  --lh-h1: 104px;
+  --fs-h2: 45px;  --lh-h2: 63px;
+  --fs-h3: 25px;  --lh-h3: 38px;
+  --fs-h4: 22px;  --lh-h4: 34px;
+  --fs-body: 15px; --lh-body: 27px;
+  --fs-link: 14px;
+
+  /* layout */
+  --gutter: 120px;
+  --container: 1200px;
+
+  /* motion */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur: .45s;
+}

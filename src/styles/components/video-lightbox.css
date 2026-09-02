@@ -1,0 +1,50 @@
+.vbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background: rgba(0, 0, 0, .88);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s var(--ease), visibility .35s;
+}
+.vbox.is-open { opacity: 1; visibility: visible; }
+/* the frame is the only click target that does NOT dismiss — everything
+   outside it is backdrop, so clicking away closes the player */
+.vbox__frame {
+  width: min(1180px, 100%);
+  background: var(--c-black);
+  transform: scale(.97);
+  transition: transform .35s var(--ease);
+}
+.vbox.is-open .vbox__frame { transform: none; }
+.vbox__frame video {
+  display: block;
+  width: 100%;
+  max-height: 80vh;
+  aspect-ratio: 16 / 9;
+  background: var(--c-black);
+}
+.vbox__close {
+  position: absolute;
+  top: 24px; right: 30px;
+  width: 46px; height: 46px;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--c-white);
+  transition: color .25s var(--ease), transform .25s var(--ease);
+}
+.vbox__close:hover { color: var(--c-red); transform: rotate(90deg); }
+
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 70px;
+}
+.fact__head { display: flex; gap: 6px; align-items: baseline; }
+.fact__num { color: var(--c-red); font-family: var(--f-display); font-weight: 700; font-size: var(--fs-h3); line-height: var(--lh-h3); }
+.fact__head h3 { flex: 1; }
+.fact p { padding-left: 54px; padding-top: 15px; }

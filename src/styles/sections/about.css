@@ -1,0 +1,65 @@
+/* ---------- 7. About ---------------------------------------- */
+.about { padding: 100px var(--gutter); background: var(--c-white); }
+.about__top { display: flex; align-items: center; gap: 0; }
+.about__copy { position: relative; z-index: 1; width: 540px; flex: none; padding: 50px 0; }
+.about__copy .eyebrow { margin-bottom: 19px; }
+.about__copy h2 { width: 750px; max-width: none; margin-bottom: 20px; }
+/* the heading runs wider than its column and over the dark still, where
+   black type disappears — these two words carry it in the brand red */
+.about__copy h2 .hl { color: var(--c-red); }
+.about__copy p { margin-bottom: 34px; }
+.about__media { flex: 1; min-width: 0; }
+
+.media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 660 / 431.78;
+}
+.media__img {
+  position: absolute; inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1);
+  transform: scale(1);
+  transition: filter .7s var(--ease), transform .9s var(--ease);
+}
+.media:hover .media__img { filter: grayscale(0); transform: scale(1.06); }
+
+.play {
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: var(--c-white);
+  transition: transform .35s var(--ease), background .35s var(--ease);
+}
+.play::before {
+  content: "";
+  width: 18px; height: 20px;
+  background: var(--c-red);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  margin-left: 4px;
+  transition: background .35s var(--ease);
+}
+.play::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: 50%;
+  border: 2px solid var(--c-white);
+  animation: pulse 2.4s var(--ease) infinite;
+}
+.play:hover { transform: scale(1.1); background: var(--c-red); }
+.play:hover::before { background: var(--c-white); }
+.play--dark { background: var(--c-black); }
+.play--dark::before { background: var(--c-white); }
+.play--dark::after { border-color: var(--c-black); }
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: .8; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* ---- video lightbox ---- */

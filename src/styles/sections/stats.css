@@ -1,0 +1,28 @@
+/* ---------- 9. Stats ---------------------------------------- */
+.stats { padding: 46px var(--gutter) 56px; background: var(--c-light); }
+.stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+/* the counter sits above its label: a 4-character outlined numeral
+   ("235+") is wider than a quarter column on its own, so it cannot
+   share a line with the label at 4-up */
+.stat { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.stat b {
+  flex: none;
+  font-family: var(--f-display);
+  font-weight: 800;
+  /* scaled so the widest counter still clears its column at 4-up */
+  font-size: clamp(36px, 4.2vw, var(--fs-h1));
+  line-height: 1.06;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--c-red);
+}
+.stat span {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 27px;
+  text-transform: uppercase;
+  color: var(--c-black);
+  /* the <br> is the only break: a width cap can't hold it, because the
+     label is a flex item that shrinks to content and re-wraps inside */
+  white-space: nowrap;
+}

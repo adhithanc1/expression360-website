@@ -1,0 +1,24 @@
+/* ---------- 14. How we work --------------------------------- */
+.work { padding: 100px var(--gutter); background: var(--c-white); }
+.work__row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; align-items: stretch; }
+.work__row + .work__row { margin-top: 30px; }
+.work__row--flip .work__panel { order: 2; }
+.work__row--flip .work__media { order: 1; }
+
+.work__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 51px;
+  border: 1px solid var(--c-black-12);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.work__panel:hover {
+  border-color: transparent;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .10);
+  transform: translateY(-4px);
+}
+.work__panel .fact__head { margin-bottom: 15px; }
+.work__panel p { margin-bottom: 24px; max-width: 483px; }
+
+.work__media { width: 100%; aspect-ratio: 600 / 276.89; }

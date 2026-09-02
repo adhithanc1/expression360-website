@@ -1,0 +1,40 @@
+/* ---------- 6. Clients -------------------------------------- */
+.clients { padding: 100px var(--gutter); background: var(--c-black); text-align: center; }
+.clients .eyebrow { margin-bottom: 19px; }
+.clients h2 { color: var(--c-white); }
+.clients .link { margin-top: 24px; }
+
+.clients__grid {
+  display: grid;
+  /* 8 logos — 4-up and 2-up both divide evenly, no ragged last row */
+  grid-template-columns: repeat(4, minmax(0, 190px));
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 32px;
+  margin-top: 68px;
+  margin-bottom: 24px;
+}
+/* Mono at rest, full colour on hover. The logo files are transparent
+   cut-outs with dark artwork, so invert knocks the mark out white
+   against the section; hover drops the filter and the real logo comes
+   through in its own colours. */
+.clients__grid span {
+  /* all eight files share one 640x320 canvas with the mark inset to the
+     same box, so `contain` renders them at a consistent optical size */
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 2 / 1;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: grayscale(1) invert(1);
+  opacity: .72;
+  transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+/* the four whose artwork is already light (or sits on a filled plate)
+   need no inversion — flipping them would push them back into the dark */
+.clients__grid span.is-light { filter: grayscale(1); }
+.clients__grid span:hover { filter: none; opacity: 1; transform: translateY(-4px); }

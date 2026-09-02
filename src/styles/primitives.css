@@ -1,0 +1,80 @@
+/* ---------- 3. Shared primitives ---------------------------- */
+.container { width: 100%; max-width: var(--container); margin: 0 auto; }
+
+.section { padding: 100px var(--gutter); background: var(--c-white); }
+.section--black { background: var(--c-black); }
+.section--dark  { background: var(--c-cod-gray); }
+.section--light { background: var(--c-light); }
+
+/* eyebrow — Syne Bold 16/24, 5px tracking, uppercase */
+.eyebrow {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin: 0;
+}
+.eyebrow--white { color: var(--c-white); }
+
+.lead { max-width: 390px; }
+
+/* underlined text link — Syne Bold 14/14, 1px tracking */
+.link {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: var(--fs-link);
+  line-height: var(--fs-link);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-black);
+  border-bottom: 1px solid var(--c-black-12);
+}
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 0; height: 1px;
+  background: var(--c-red);
+  transition: width var(--dur) var(--ease);
+}
+.link:hover::after { width: 100%; }
+.link:hover { color: var(--c-red); }
+
+.link--light { color: var(--c-white); border-bottom-color: var(--c-white-19); }
+.link--light:hover { color: var(--c-red); }
+
+.btn {
+  display: inline-block;
+  padding: 17px 40px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: var(--fs-link);
+  line-height: var(--fs-link);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-white);
+  background: var(--c-red);
+  border: 1px solid var(--c-red);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.btn:hover { background: transparent; color: var(--c-red); transform: translateY(-2px); }
+
+/* centred section intro */
+.head { text-align: center; margin-bottom: 70px; }
+.head .eyebrow { margin-bottom: 19px; }
+.head h2 { max-width: 600px; margin: 0 auto; }
+.head--wide h2 { max-width: 840px; }
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.is-in { opacity: 1; transform: none; }

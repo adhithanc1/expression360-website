@@ -1,0 +1,49 @@
+/* ---------- 17. CTA ----------------------------------------- */
+.cta {
+  position: relative;
+  padding: 108px var(--gutter);
+  text-align: center;
+  overflow: hidden;
+}
+.cta::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--img-cta-bg) no-repeat center / cover;
+  filter: grayscale(1);
+  transform: scale(1.03);
+  transition: transform 1.2s var(--ease);
+}
+.cta:hover::before { transform: scale(1.08); }
+/* the office block is dense text over a photo — it needs a real ground */
+.cta::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .78); }
+.cta .container { position: relative; z-index: 1; }
+.cta h2 { color: var(--c-white); margin: 19px 0 12px; }
+.cta__note { color: var(--c-white); margin-bottom: 26px; }
+
+/* ---- offices ---- */
+.offices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 54px 40px;
+  margin-top: 76px;
+  text-align: left;
+}
+.office h4 { color: var(--c-white); margin-bottom: 14px; }
+.office h4 span { font-weight: 500; font-size: 16px; color: var(--c-white-60); }
+.office address {
+  font-style: normal;
+  color: var(--c-mercury);
+  line-height: 26px;
+  margin-bottom: 14px;
+}
+.office__line { color: var(--c-white-60); line-height: 26px; }
+.office__line b {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: var(--fs-link);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-white);
+}
+.office__line a { color: var(--c-mercury); transition: color .25s var(--ease); }
+.office__line a:hover { color: var(--c-red); }
