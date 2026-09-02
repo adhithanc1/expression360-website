@@ -65,7 +65,7 @@ export const careers = {
   eyebrow: 'Careers',
   heading: 'Become An Expressioneer',
   lead: 'Where ideas find expression, and talent finds opportunity.',
-  image: '/assets/img-skills.jpg',
+  image: '/assets/about-us.jpg',
   cta: { label: 'Apply Now', href: '#contact' },
 };
 

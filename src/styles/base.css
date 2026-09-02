@@ -2,6 +2,10 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+/* every nav target is an in-page anchor under a sticky header; without this
+   the browser scrolls the section's top edge to y=0, i.e. behind the bar.
+   Scoped to sections so it can't perturb #top (the <main>) or form fields. */
+section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 
 body {
   margin: 0;

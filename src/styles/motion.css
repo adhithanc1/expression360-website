@@ -7,4 +7,8 @@
     transition-duration: .001ms !important;
   }
   .reveal, .bar__note, .bar__pct, .timeline .milestone { opacity: 1; transform: none; }
+  /* the blanket rule above would snap the marquee to its end frame;
+     stop it outright and let the strip be swiped through instead */
+  .clients__track { animation: none !important; transform: none !important; }
+  .clients__marquee { overflow-x: auto; }
 }

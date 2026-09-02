@@ -34,9 +34,10 @@ export const nav: NavLink[] = [
       { label: 'Team', href: '#team' },
       { label: 'Journey', href: '#journey' },
       { label: 'Blog', href: '#blog' },
-      { label: 'Contact', href: '#contact' },
     ],
   },
+  /* Contact is a top-level item, so it is deliberately absent from the
+     Pages children — listing it twice gave the same anchor two homes */
   { label: 'Contact', href: '#contact' },
 ];
 

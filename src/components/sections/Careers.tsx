@@ -28,7 +28,7 @@ export function Careers({ onPlay }: Props) {
       <div className="container skills__inner">
         <Reveal className="skills__media">
           <Media image={careers.image} alt="Life at Expression 360">
-            <PlayButton dark onClick={onPlay} label="Play careers video" />
+            <PlayButton onClick={onPlay} label="Play careers video" />
           </Media>
         </Reveal>
 

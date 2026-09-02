@@ -1,30 +1,53 @@
 /* ---------- 6. Clients -------------------------------------- */
-.clients { padding: 100px var(--gutter); background: var(--c-black); text-align: center; }
+.clients { padding: 72px var(--gutter) 100px; background: var(--c-black); text-align: center; }
 .clients .eyebrow { margin-bottom: 19px; }
 .clients h2 { color: var(--c-white); }
 .clients .link { margin-top: 24px; }
 
-.clients__grid {
-  display: grid;
-  /* 8 logos — 4-up and 2-up both divide evenly, no ragged last row */
-  grid-template-columns: repeat(4, minmax(0, 190px));
-  justify-content: space-between;
-  justify-items: center;
-  align-items: center;
-  column-gap: 24px;
-  row-gap: 32px;
-  margin-top: 68px;
-  margin-bottom: 24px;
+/* ---- auto-scrolling logo marquee ---- */
+/* Full-bleed: cancels the section gutter so logos run off both edges
+   and the strip reads as endless rather than as a boxed row. */
+.clients__marquee {
+  --logo-w: 200px;
+  --logo-gap: 56px;
+  /* seconds per logo — the whole strip inherits one constant velocity,
+     so adding or removing a client changes the loop length, not the pace */
+  --logo-pace: 4.5s;
+  margin: 68px calc(var(--gutter) * -1) 0;
+  overflow: hidden;
+  /* soften the cut at both ends instead of clipping mid-logo */
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
+
+.clients__track {
+  display: flex;
+  width: max-content;
+  animation: clientsMarquee calc(var(--logo-pace) * 8) linear infinite;
+}
+/* hovering the strip holds it still so a logo can actually be looked at */
+.clients__marquee:hover .clients__track { animation-play-state: paused; }
+
+.clients__run {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  /* the gap between the two runs has to match the in-run gap, otherwise
+     the seam shows as a wider or tighter step once per loop */
+  margin: 0 calc(var(--logo-gap) / 2) 0 0;
+  padding: 0 0 0 calc(var(--logo-gap) / 2);
+  list-style: none;
+}
+.clients__run li { flex: 0 0 var(--logo-w); display: flex; justify-content: center; }
+
 /* Mono at rest, full colour on hover. The logo files are transparent
    cut-outs with dark artwork, so invert knocks the mark out white
    against the section; hover drops the filter and the real logo comes
    through in its own colours. */
-.clients__grid span {
+.clients__run span {
   /* all eight files share one 640x320 canvas with the mark inset to the
      same box, so `contain` renders them at a consistent optical size */
   width: 100%;
-  max-width: 200px;
   aspect-ratio: 2 / 1;
   height: auto;
   background-repeat: no-repeat;
@@ -36,5 +59,12 @@
 }
 /* the four whose artwork is already light (or sits on a filled plate)
    need no inversion — flipping them would push them back into the dark */
-.clients__grid span.is-light { filter: grayscale(1); }
-.clients__grid span:hover { filter: none; opacity: 1; transform: translateY(-4px); }
+.clients__run span.is-light { filter: grayscale(1); }
+.clients__run span:hover { filter: none; opacity: 1; transform: translateY(-4px); }
+
+/* half the track is one full run, so this lands the duplicate exactly
+   where the original began — no visible jump on repeat */
+@keyframes clientsMarquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}

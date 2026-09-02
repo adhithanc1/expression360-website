@@ -1,5 +1,8 @@
 /* ---------- 5. Hero ----------------------------------------- */
-.hero { padding: 50px var(--gutter) 100px; background: var(--c-black); }
+/* the short bottom pad is deliberate: Clients sits directly below on the
+   same black, so the two paddings stack into one seam — 40 here plus 72
+   there reads as a single break instead of a 200px void */
+.hero { padding: 50px var(--gutter) 40px; background: var(--c-black); }
 
 .hero__top {
   position: relative;
@@ -94,8 +97,11 @@
 .hero__copy .link { margin-top: 19px; }
 
 .socials {
+  /* one knob for the hit box — the narrow breakpoints shrink it so all
+     eight icons keep fitting on a single row */
+  --soc: 33px;
   display: grid;
-  grid-template-columns: repeat(4, 33px);
+  grid-template-columns: repeat(4, var(--soc));
   gap: 15px;
   justify-content: end;
   align-content: start;
@@ -103,7 +109,7 @@
 .socials a {
   display: grid;
   place-items: center;
-  width: 33px; height: 33px;
+  width: var(--soc); height: var(--soc);
   font-size: 15px;
   color: var(--c-white);
   transition: color .3s var(--ease), transform .3s var(--ease);

@@ -31,7 +31,6 @@
   .team__grid { grid-template-columns: repeat(2, 1fr); gap: 30px 15px; }
   .blog__grid { grid-template-columns: repeat(2, 1fr); }
   .carousel { --cards: 2; }
-  .clients__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .newsletter { flex-direction: column; align-items: flex-start; }
 }
 
@@ -46,10 +45,21 @@
 
 @media (max-width: 860px) {
   :root { --fs-h1: 36px; --lh-h1: 56px; --fs-h2: 30px; --lh-h2: 42px; --fs-h3: 22px; --lh-h3: 32px; --gutter: 24px; --hero-ratio: 3 / 2; }
-  .hero { padding: 30px var(--gutter) 60px; }
+  .hero { padding: 30px var(--gutter) 24px; }
   .hero__foot { flex-direction: column; gap: 30px; }
-  .socials { justify-content: start; }
+  /* the 4-column grid wraps eight icons onto two rows once the foot
+     stacks — go flex and spread them across one line instead. space-between
+     can never overflow, and the width cap stops them flinging apart on the
+     wide end of this range. */
+  .socials {
+    display: flex;
+    width: min(100%, 420px);
+    justify-content: space-between;
+    gap: 10px;
+  }
   .section, .about, .projects, .team, .work, .blog, .testimonials, .clients, .skills { padding-top: 60px; padding-bottom: 60px; }
+  /* keeps the hero/clients seam a single break at this width too */
+  .clients { padding-top: 44px; }
   .services { padding-top: 60px; }
   .stats { padding: 40px var(--gutter) 48px; }
   .about__facts, .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
@@ -104,12 +114,16 @@
 }
 
 @media (max-width: 640px) {
-  /* four logos would drop too narrow to read here — go 2-up instead */
-  .clients__grid { grid-template-columns: repeat(2, minmax(0, 200px)); column-gap: 32px; justify-content: center; }
+  /* logos at full size leave too little of the strip on screen to read as
+     a run, so shrink the slot and close the gap — pace scales with it */
+  .clients__marquee { --logo-w: 150px; --logo-gap: 36px; --logo-pace: 3.5s; }
 }
 
 @media (max-width: 520px) {
-  :root { --hero-ratio: 4 / 5; }
+  /* .header__inner drops to 64px below, so the anchor offset follows it */
+  :root { --hero-ratio: 4 / 5; --header-h: 79px; }
+  /* 8x33 + gaps overruns a 320px viewport, so trim the hit box to hold the row */
+  .socials { --soc: 28px; gap: 6px; }
   .hero__stage { min-height: 340px; }
   .team__grid, .about__facts, .stats__grid { grid-template-columns: 1fr; }
   .stat { justify-content: flex-start; }

@@ -31,6 +31,9 @@
   /* layout */
   --gutter: 120px;
   --container: 1200px;
+  /* header top pad (15) + .header__inner height (76) — the sticky bar's
+     real footprint, so anchor jumps can clear it */
+  --header-h: 91px;
 
   /* motion */
   --ease: cubic-bezier(.22, .61, .36, 1);
